@@ -1,0 +1,25 @@
+{
+    "name": "gavoronok30/laravel-activation-code",
+    "description": "laravel activation codes",
+    "type": "library",
+    "license": "LGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "gavoronok30",
+            "email": "gavoronok30@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^7.0|^8.0",
+        "illuminate/database": "^7.0|^8.0",
+        "nesbot/carbon": "^1.0|^2.0",
+        "illuminate/collections": "^7.0|^8.0"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Gavoronok30\\LaravelActivationCode\\": "src/"
+        }
+    }
+}
