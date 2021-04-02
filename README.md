@@ -21,7 +21,7 @@ For creating config file
 ```
 php artisan activation:code:publish --tag=config
 ```
-For generate default blade templates
+For creating migration file
 ```
 php artisan activation:code:publish --tag=migration
 ```

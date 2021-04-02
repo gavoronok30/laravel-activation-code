@@ -93,8 +93,8 @@ class ActivationCodeCommand extends Command
         if (!file_exists($to)) {
             mkdir($to, 0755, true);
         }
-        $from = trim($from, '/') . '/';
-        $to = trim($to, '/') . '/';
+        $from = rtrim($from, '/') . '/';
+        $to = rtrim($to, '/') . '/';
         foreach (scandir($from) as $file) {
             if (!is_file($from . $file)) {
                 continue;
