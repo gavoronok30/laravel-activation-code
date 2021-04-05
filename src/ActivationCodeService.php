@@ -16,6 +16,10 @@ use Illuminate\Support\Str;
 class ActivationCodeService implements ActivationCodeServiceInterface
 {
     /**
+     * @var string
+     */
+    private string $model;
+    /**
      * @var int|null
      */
     private ?int $generateCodeMode = null;
@@ -35,6 +39,14 @@ class ActivationCodeService implements ActivationCodeServiceInterface
      * @var string|null
      */
     private ?string $codeTTL = null;
+
+    /**
+     * ActivationCodeService constructor.
+     */
+    public function __construct()
+    {
+        $this->model = Config::get('activation_code.model');
+    }
 
     /**
      * @param int|null $generateCodeMode
@@ -165,7 +177,7 @@ class ActivationCodeService implements ActivationCodeServiceInterface
         foreach ($activationCodes as $activationCode) {
             $this->delete($activationCode);
         }
-        $activationCode = new ActivationCode();
+        $activationCode = new $this->model();
         $activationCode->receiver = $receiver;
         $activationCode->code = $this->generateCode();
         $activationCode->type = $type;
@@ -259,7 +271,7 @@ class ActivationCodeService implements ActivationCodeServiceInterface
      */
     private function getModel(?string $receiver, ?string $type, ?int $recordId = null): EloquentCollection
     {
-        $query = ActivationCode::query();
+        $query = $this->model::query();
         if ($receiver) {
             $query->where('receiver', '=', $receiver);
         }

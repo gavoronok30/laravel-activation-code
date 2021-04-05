@@ -20,5 +20,22 @@ return [
         ),
         'code_length' => env('ACTIVATION_CODE_SMS_CODE_LENGTH', 4),
         'code_ttl' => env('ACTIVATION_CODE_SMS_CODE_TTL', '5m'),
-    ]
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Table name
+    |--------------------------------------------------------------------------
+    */
+    'table' => 'activation_codes',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Model
+    |--------------------------------------------------------------------------
+    | Default: \Gavoronok30\LaravelActivationCode\Model\ActivationCode::class
+    | Change to your custom class if you need to extend the model or change the table name
+    | A custom class must inherit the base class \Gavoronok30\LaravelActivationCode\Model\ActivationCode
+    */
+    'model' => \Gavoronok30\LaravelActivationCode\Model\ActivationCode::class,
 ];

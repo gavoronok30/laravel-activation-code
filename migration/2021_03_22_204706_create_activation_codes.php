@@ -16,16 +16,19 @@ class CreateActivationCodes extends Migration
      */
     public function up()
     {
-        Schema::create('activation_codes', function (Blueprint $table) {
-            $table->id();
-            $table->string('receiver')->nullable();
-            $table->string('code')->index();
-            $table->string('type')->index()->nullable();
-            $table->integer('record_id')->nullable();
-            $table->integer('attempt')->default(0);
-            $table->dateTime('expires_at')->nullable();
-            $table->dateTime('created_at')->nullable();
-        });
+        Schema::create(
+            '{{TABLE_NAME}}',
+            function (Blueprint $table) {
+                $table->id();
+                $table->string('receiver')->nullable();
+                $table->string('code')->index();
+                $table->string('type')->index()->nullable();
+                $table->integer('record_id')->nullable();
+                $table->integer('attempt')->default(0);
+                $table->dateTime('expires_at')->nullable();
+                $table->dateTime('created_at')->nullable();
+            }
+        );
     }
 
     /**
@@ -35,6 +38,6 @@ class CreateActivationCodes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('activation_codes');
+        Schema::dropIfExists('{{TABLE_NAME}}');
     }
 }

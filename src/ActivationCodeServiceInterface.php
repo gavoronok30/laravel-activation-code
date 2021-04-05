@@ -106,9 +106,16 @@ interface ActivationCodeServiceInterface
      * @param string|null $code
      * @param string|null $type
      * @param bool $exception
+     * @param bool $notCheckAttempt
      * @return ActivationCode|null
      */
-    public function get(?string $receiver, ?string $code, ?string $type, bool $exception = true): ?ActivationCode;
+    public function get(
+        ?string $receiver,
+        ?string $code,
+        ?string $type,
+        bool $exception = true,
+        bool $notCheckAttempt = false
+    ): ?ActivationCode;
 
     /**
      * @param ActivationCode $activationCode

@@ -58,7 +58,7 @@ php artisan vendor:publish --provider="Gavoronok30\LaravelActivationCode\Provide
 ```
 For creating migration file
 ```
-php artisan vendor:publish --provider="Gavoronok30\LaravelActivationCode\Providers\ActivationCodeServiceProvider" --tag=migration
+php artisan activation:code:publish --tag=migration
 ```
 For generate table
 ```
@@ -107,6 +107,55 @@ ACTIVATION_CODE_DEFAULT_CODE_TTL=1h
 Code TTL (for sms mode)
 ```
 ACTIVATION_CODE_SMS_CODE_TTL=5m
+```
+
+## Custom model
+
+###### Step 1
+
+Create custom model for activation code
+
+Example:
+
+File: **app/CustomFile.php**
+
+Content:
+
+```
+<?php
+
+namespace App;
+
+class CustomFile extends \Gavoronok30\LaravelActivationCode\Model\ActivationCode
+{
+}
+```
+
+If need change table name or need added other code:
+
+```
+<?php
+
+namespace App;
+
+class CustomFile extends \Gavoronok30\LaravelActivationCode\Model\ActivationCode
+{
+    protected $table = 'YOUR_TABLE_NAME';
+    
+    // other code
+}
+```
+
+###### Step 2
+
+Open **config/activation_code.php** and change parameter "model", example:
+
+```
+...
+// remove
+'model' => \Gavoronok30\LaravelActivationCode\Model\ActivationCode::class,
+// add
+'model' => \App\CustomFile::class,
 ```
 
 ## Usage

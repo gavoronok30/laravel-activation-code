@@ -4,6 +4,7 @@ namespace Gavoronok30\LaravelActivationCode\Console\Commands;
 
 use Gavoronok30\LaravelActivationCode\Providers\ActivationCodeServiceProvider;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Config;
 
 /**
  * Class ActivationCodeCommand
@@ -121,6 +122,10 @@ class ActivationCodeCommand extends Command
                 $from . $file,
                 $to . $file
             );
+
+            $content = file_get_contents($to . $file);
+            $content = strtr($content, ['{{TABLE_NAME}}' => Config::get('activation_code.table')]);
+            file_put_contents($to . $file, $content);
 
             $this->info(
                 sprintf(
