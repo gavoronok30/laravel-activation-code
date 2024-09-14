@@ -1,0 +1,36 @@
+{
+    "name": "crow/laravel-activation-code",
+    "description": "laravel activation codes",
+    "type": "library",
+    "version": "1.0.0",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gavoronok30",
+            "email": "gavoronok30@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "keywords": [
+        "laravel",
+        "activation",
+        "code"
+    ],
+    "require": {
+        "php": ">=8.2",
+        "laravel/framework": ">=11.0"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Crow\\LaravelActivationCode\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Crow\\LaravelActivationCode\\Providers\\ActivationCodeServiceProvider"
+            ]
+        }
+    }
+}
